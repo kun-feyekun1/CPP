@@ -483,3 +483,16 @@ Kruskal → Graph & Greedy
 Algorithms can be generalized or specialized depending on data structure or problem type.
 
 This list covers almost all standard algorithms taught in computer science, competitive programming, and software engineering.
+
+
+
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/yourusername/YourRepo.git
+git push -u origin main
+
+
+git add .
+git commit -m "Describe changes"
+git push
