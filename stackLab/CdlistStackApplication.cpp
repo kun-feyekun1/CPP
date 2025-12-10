@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -8,66 +9,56 @@ struct Node {
     Node* next;
 };
 
-Node* topPtr = nullptr;
+Node* firstPtr = nullptr;
 
 bool isEmpty() {
-    return topPtr == nullptr;
+    return firstPtr == nullptr;
 }
 
-// Push using circular doubly linked list
 void push(char value) {
     Node* newNode = new Node;
     newNode->data = value;
 
-    if (topPtr == nullptr) {
-        // First node → points to itself
+    if (firstPtr == nullptr) {
         newNode->next = newNode;
         newNode->prev = newNode;
-        topPtr = newNode;
+        firstPtr = newNode;
     } 
     else {
-        Node* last = topPtr->prev;
-
-        newNode->next = topPtr;
-        newNode->prev = last;
-
-        last->next = newNode;
-        topPtr->prev = newNode;
-
-        topPtr = newNode;   // new node becomes top
+        Node* lastPtr = firstPtr->prev;
+        newNode->next = firstPtr;
+        newNode->prev = lastPtr;
+        lastPtr->next = newNode; 
+        firstPtr->prev = newNode;
     }
 }
 
-// Pop from circular doubly linked list
 char pop() {
     if (isEmpty())
         return '\0';
 
-    char value = topPtr->data;
+    Node* lastPtr = firstPtr->prev;
+    char value = lastPtr->data;
 
-    if (topPtr->next == topPtr) {
-        // only 1 node
-        delete topPtr;
-        topPtr = nullptr;
+    if (lastPtr == firstPtr) {
+        delete lastPtr;
+        firstPtr = nullptr;
     }
     else {
-        Node* last = topPtr->prev;
-        Node* second = topPtr->next;
+        Node* secondLast = lastPtr->prev;
+        secondLast->next = firstPtr;
+        firstPtr->prev = secondLast;
 
-        last->next = second;
-        second->prev = last;
-
-        delete topPtr;
-        topPtr = second;   // move top to next element
+        delete lastPtr;
     }
-
     return value;
 }
+
 
 char peek() {
     if (isEmpty())
         return '\0';
-    return topPtr->data;
+    return firstPtr->prev->data;
 }
 
 bool isAlphaNum(char c) {
@@ -83,9 +74,8 @@ int precedence(char op) {
     return 0;
 }
 
-// Reverse string
 string reverseString(const string& s) {
-    topPtr = nullptr;
+    firstPtr = nullptr;
 
     for (char c : s)
         push(c);
@@ -97,14 +87,12 @@ string reverseString(const string& s) {
     return out;
 }
 
-// Palindrome check
 bool isPalindrome(const string& s) {
     return s == reverseString(s);
 }
 
-// Decimal to binary
 string decimalToBinary(int num) {
-    topPtr = nullptr;
+    firstPtr = nullptr;
 
     if (num == 0)
         return "0";
@@ -121,9 +109,8 @@ string decimalToBinary(int num) {
     return bin;
 }
 
-// Infix to Postfix
 string infixToPostfix(const string& infix) {
-    topPtr = nullptr;
+    firstPtr = nullptr;
     string postfix = "";
 
     for (char ch : infix) {
@@ -138,7 +125,7 @@ string infixToPostfix(const string& infix) {
         else if (ch == ')') {
             while (!isEmpty() && peek() != '(')
                 postfix += pop();
-            pop(); // remove '('
+            pop();
         }
         else {
             while (!isEmpty() && precedence(ch) <= precedence(peek()))
@@ -153,7 +140,6 @@ string infixToPostfix(const string& infix) {
     return postfix;
 }
 
-// MAIN PROGRAM
 int main() {
     int choice;
 
