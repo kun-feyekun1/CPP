@@ -1,0 +1,485 @@
+
+Algorithms
+├── Searching
+│   ├── Linear Search → Arrays, Linked Lists
+│   ├── Binary Search → Arrays (requires random access)
+│   ├── Hash Table Lookup → Hash Tables
+│   ├── Jump Search → Arrays
+│   ├── Interpolation Search → Arrays
+│   └── Fibonacci Search → Arrays
+│
+├── Sorting
+│   ├── Bubble Sort → Arrays, Linked Lists
+│   ├── Selection Sort → Arrays, Linked Lists
+│   ├── Insertion Sort → Arrays, Linked Lists
+│   ├── Merge Sort → Arrays, Linked Lists
+│   ├── Quick Sort → Arrays (hard on lists)
+│   ├── Heap Sort → Arrays, Heaps
+│   ├── Counting Sort → Arrays
+│   ├── Radix Sort → Arrays, Lists (via buckets)
+│   └── Bucket Sort → Arrays, Lists (via buckets)
+│
+├── Graph Algorithms
+│   ├── BFS → Graph (uses queue)
+│   ├── DFS → Graph (uses stack or recursion)
+│   ├── Dijkstra → Graph (uses priority queue)
+│   ├── Bellman-Ford → Graph
+│   └── Kruskal / Prim → Graph (edges + union-find)
+│
+├── String Algorithms
+│   ├── KMP → Strings / Arrays
+│   ├── Rabin-Karp → Strings / Arrays
+│   ├── Longest Palindromic Substring → Strings
+│   └── Trie operations → Trie Data Structure
+│
+├── Greedy Algorithms
+│   ├── Coin Change → Arrays / Problem-specific
+│   ├── Fractional Knapsack → Arrays
+│   └── Activity Selection → Arrays / Lists
+│
+├── Dynamic Programming
+│   ├── Fibonacci DP → Arrays
+│   ├── LCS (Longest Common Subsequence) → Arrays
+│   ├── Knapsack Problem → Arrays
+│   └── Matrix Chain Multiplication → Arrays
+│
+├── Backtracking
+│   ├── N-Queens → Arrays / Board (matrix)
+│   ├── Sudoku Solver → Arrays / Matrix
+│   └── Maze Solving → Graph / Arrays
+│
+├── Branch and Bound
+│   └── Traveling Salesman Problem → Graph / Arrays
+│
+└── Heuristic / Approximation Algorithms
+    ├── Genetic Algorithm → Arrays / Lists (population)
+    ├── Monte Carlo → Arrays / Problem-specific
+    └── TSP Approximation → Graph / Lists
+
+
+
+
+
+Algorithms
+├── Searching
+│   ├── Linear Search → Arrays, Linked Lists
+│   ├── Binary Search → Arrays (requires random access)
+│   ├── Hash Table Lookup → Hash Tables
+│   ├── Jump Search → Arrays
+│   ├── Interpolation Search → Arrays
+│   └── Fibonacci Search → Arrays
+│
+├── Sorting
+│   ├── Bubble Sort → Arrays, Linked Lists
+│   ├── Selection Sort → Arrays, Linked Lists
+│   ├── Insertion Sort → Arrays, Linked Lists
+│   ├── Merge Sort → Arrays, Linked Lists
+│   ├── Quick Sort → Arrays (hard on linked lists)
+│   ├── Heap Sort → Arrays, Heaps
+│   ├── Counting Sort → Arrays
+│   ├── Radix Sort → Arrays, Lists (via buckets)
+│   └── Bucket Sort → Arrays, Lists (via buckets)
+│
+├── Graph Algorithms
+│   ├── BFS → Graph (uses queue)
+│   ├── DFS → Graph (uses stack or recursion)
+│   ├── Dijkstra → Graph (uses priority queue)
+│   ├── Bellman-Ford → Graph
+│   ├── Floyd-Warshall → Graph / Matrix
+│   ├── Prim’s Algorithm → Graph (edges + priority queue)
+│   └── Kruskal’s Algorithm → Graph (edges + union-find)
+│
+├── String Algorithms
+│   ├── Naive String Matching → Arrays / Strings
+│   ├── KMP (Knuth-Morris-Pratt) → Strings / Arrays
+│   ├── Rabin-Karp → Strings / Arrays
+│   ├── Boyer-Moore → Strings / Arrays
+│   ├── Z-Algorithm → Strings / Arrays
+│   ├── Trie operations → Trie Data Structure
+│   ├── Longest Common Subsequence → Arrays / Strings
+│   └── Longest Palindromic Substring → Strings / Arrays
+│
+├── Greedy Algorithms
+│   ├── Activity Selection → Arrays / Lists
+│   ├── Fractional Knapsack → Arrays
+│   ├── Coin Change (Greedy) → Arrays / Problem-specific
+│   ├── Huffman Encoding → Priority Queue / Tree
+│   └── Job Scheduling → Arrays / Lists
+│
+├── Dynamic Programming
+│   ├── Fibonacci Sequence → Arrays
+│   ├── Longest Common Subsequence → Arrays
+│   ├── Longest Increasing Subsequence → Arrays
+│   ├── Knapsack Problem → Arrays / Matrices
+│   ├── Matrix Chain Multiplication → Arrays / Matrices
+│   ├── Coin Change → Arrays
+│   └── Minimum/Maximum Path Sum (Grid DP) → Arrays / Matrices
+│
+├── Backtracking
+│   ├── N-Queens → Arrays / Board (Matrix)
+│   ├── Sudoku Solver → Arrays / Matrix
+│   ├── Maze Solving → Graph / Arrays
+│   ├── Hamiltonian Path / Cycle → Graph / Arrays
+│   ├── Subset Sum → Arrays
+│   └── Word Search in Grid → Arrays / Matrix
+│
+├── Branch and Bound
+│   ├── Traveling Salesman Problem → Graph / Arrays
+│   ├── 0/1 Knapsack → Arrays
+│   └── Job Scheduling with Deadlines → Arrays / Lists
+│
+├── Geometric Algorithms
+│   ├── Convex Hull (Graham Scan / Jarvis March) → Arrays / Points
+│   ├── Line Intersection → Arrays / Points
+│   ├── Closest Pair of Points → Arrays / Points
+│   └── Sweep Line Algorithms → Arrays / Events
+│
+├── Randomized / Probabilistic Algorithms
+│   ├── Randomized Quick Sort → Arrays
+│   ├── Monte Carlo Algorithms → Arrays / Problem-specific
+│   ├── Las Vegas Algorithms → Arrays / Problem-specific
+│   └── Randomized Primality Tests (Miller-Rabin) → Integers
+│
+├── Approximation / Heuristic Algorithms
+│   ├── Traveling Salesman Problem (Approximation) → Graph / Lists
+│   ├── Greedy Knapsack (Approximate) → Arrays / Lists
+│   ├── Simulated Annealing → Arrays / Problem-specific
+│   └── Genetic Algorithms → Arrays / Lists (Population)
+│
+├── Number Theory / Mathematical Algorithms
+│   ├── Sieve of Eratosthenes → Arrays / Boolean Flags
+│   ├── Euclidean Algorithm → Integers
+│   ├── Extended Euclidean Algorithm → Integers
+│   ├── Modular Exponentiation → Integers
+│   └── Fast Fourier Transform (FFT) → Arrays / Complex Numbers
+│
+└── Miscellaneous / Specialized Algorithms
+    ├── Topological Sort → Graph
+    ├── K-Core / K-Clique Algorithms → Graph
+    ├── Network Flow (Edmonds-Karp / Dinic) → Graph / Queue
+    ├── Disjoint Set / Union-Find → Arrays / Trees
+    ├── Segment Trees → Arrays / Trees
+    ├── Fenwick Trees (Binary Indexed Tree) → Arrays
+    └── LRU / LFU Cache Implementation → Hash Tables + Doubly Linked List
+
+
+
+Data Structures
+├── Primitive Data Types
+│   ├── int
+│   ├── float / double
+│   ├── char
+│   ├── bool
+│   └── pointer
+│
+├── Linear Data Structures
+│   ├── Array
+│   ├── Dynamic Array (Vector)
+│   ├── Singly Linked List
+│   ├── Doubly Linked List
+│   ├── Circular Linked List
+│   ├── Stack (Array-based / Linked List-based)
+│   └── Queue
+│       ├── Simple Queue
+│       ├── Circular Queue
+│       └── Double-Ended Queue (Deque)
+│
+├── Non-Linear Data Structures
+│   ├── Trees
+│   │   ├── Binary Tree
+│   │   ├── Binary Search Tree (BST)
+│   │   ├── AVL Tree
+│   │   ├── Red-Black Tree
+│   │   ├── Splay Tree
+│   │   ├── B-Tree
+│   │   ├── B+ Tree
+│   │   ├── Heap
+│   │   │   ├── Min Heap
+│   │   │   └── Max Heap
+│   │   ├── Segment Tree
+│   │   └── Fenwick Tree (Binary Indexed Tree)
+│   │
+│   ├── Graph
+│   │   ├── Directed Graph
+│   │   ├── Undirected Graph
+│   │   ├── Weighted Graph
+│   │   ├── Unweighted Graph
+│   │   ├── Tree Graph
+│   │   └── DAG (Directed Acyclic Graph)
+│
+├── Hash-Based Data Structures
+│   ├── Hash Table / Hash Map
+│   ├── Hash Set
+│   └── Perfect Hashing (rare)
+│
+├── Specialized Data Structures
+│   ├── Trie (Prefix Tree)
+│   ├── Suffix Tree
+│   ├── Suffix Array
+│   ├── Bloom Filter
+│   ├── Skip List
+│   ├── Disjoint Set (Union-Find)
+│   ├── LRU Cache (Hash Map + Doubly Linked List)
+│   └── Graph Adjacency Structures
+│       ├── Adjacency List
+│       ├── Adjacency Matrix
+│       └── Edge List
+│
+├── Matrix-Based Structures
+│   ├── 2D Array
+│   ├── Sparse Matrix
+│   ├── Dense Matrix
+│   └── Grid (used in games, DP, pathfinding)
+│
+└── File/External Data Structures (Advanced)
+    ├── ISAM
+    ├── B+ Tree (database indexing)
+    ├── Log-Structured Merge Trees (LSM Trees)
+    └── Tries used in DB and Filesystems
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sure! Listing all known algorithms is tricky because new ones are constantly being invented, but I can give you a comprehensive overview 
+of the main and widely studied algorithms in computer science, grouped by type. This will cover practically everything taught in 
+standard CS courses and used in practice.
+
+1️⃣ Searching Algorithms
+
+Linear Search (Sequential Search)
+
+Binary Search
+
+Jump Search
+
+Exponential Search
+
+Interpolation Search
+
+Fibonacci Search
+
+Hash Table Lookup
+
+2️⃣ Sorting Algorithms
+Simple / Quadratic
+
+Bubble Sort
+
+Selection Sort
+
+Insertion Sort
+
+Efficient / Divide & Conquer
+
+Merge Sort
+
+Quick Sort
+
+Heap Sort
+
+Non-Comparison-Based
+
+Counting Sort
+
+Radix Sort
+
+Bucket Sort
+
+3️⃣ Graph Algorithms
+Traversal
+
+BFS (Breadth-First Search)
+
+DFS (Depth-First Search)
+
+Shortest Path
+
+Dijkstra’s Algorithm
+
+Bellman-Ford Algorithm
+
+Floyd-Warshall Algorithm
+
+A* Search Algorithm
+
+Minimum Spanning Tree
+
+Prim’s Algorithm
+
+Kruskal’s Algorithm
+
+Boruvka’s Algorithm
+
+Network Flow / Connectivity
+
+Ford-Fulkerson / Edmonds-Karp
+
+Kosaraju’s Algorithm (Strongly Connected Components)
+
+Tarjan’s Algorithm (SCC / Bridges)
+
+4️⃣ String Algorithms
+
+Naive String Matching
+
+KMP (Knuth-Morris-Pratt)
+
+Rabin-Karp Algorithm
+
+Boyer-Moore Algorithm
+
+Z-Algorithm
+
+Trie-based searches
+
+Suffix Trees & Suffix Arrays
+
+Longest Common Subsequence (LCS)
+
+Longest Palindromic Substring
+
+5️⃣ Dynamic Programming Algorithms
+
+Fibonacci Sequence (DP)
+
+Longest Common Subsequence (LCS)
+
+Longest Increasing Subsequence (LIS)
+
+Knapsack Problem (0/1 and Fractional)
+
+Matrix Chain Multiplication
+
+Edit Distance (Levenshtein Distance)
+
+Coin Change Problem
+
+Minimum/Maximum Path Sum (Grid DP)
+
+6️⃣ Greedy Algorithms
+
+Activity Selection Problem
+
+Fractional Knapsack Problem
+
+Huffman Encoding
+
+Minimum Spanning Tree (Prim/Kruskal)
+
+Job Scheduling Problem
+
+7️⃣ Backtracking Algorithms
+
+N-Queens Problem
+
+Sudoku Solver
+
+Rat in a Maze
+
+Hamiltonian Path / Cycle
+
+Subset Sum Problem
+
+Word Search in 2D Grid
+
+8️⃣ Divide & Conquer Algorithms
+
+Merge Sort
+
+Quick Sort
+
+Binary Search
+
+Maximum Subarray Problem (Kadane variant with divide & conquer)
+
+Closest Pair of Points
+
+9️⃣ Branch & Bound Algorithms
+
+Traveling Salesman Problem (TSP) exact solution
+
+0/1 Knapsack using branch & bound
+
+Job Scheduling with deadlines
+
+10️⃣ Geometric Algorithms
+
+Convex Hull (Graham Scan / Jarvis March)
+
+Line Intersection
+
+Closest Pair of Points
+
+Sweep Line Algorithms
+
+11️⃣ Randomized / Probabilistic Algorithms
+
+Randomized Quick Sort
+
+Monte Carlo Algorithms
+
+Las Vegas Algorithms
+
+Randomized Min-Cut Algorithm
+
+Randomized Primality Tests (e.g., Miller-Rabin)
+
+12️⃣ Approximation / Heuristic Algorithms
+
+Traveling Salesman Problem (Approximation)
+
+Greedy Knapsack (Approximate)
+
+Simulated Annealing
+
+Genetic Algorithms
+
+Ant Colony Optimization
+
+13️⃣ Number Theory / Mathematical Algorithms
+
+Sieve of Eratosthenes (Prime Numbers)
+
+Euclidean Algorithm (GCD)
+
+Extended Euclidean Algorithm
+
+Modular Exponentiation
+
+Fast Fourier Transform (FFT)
+
+14️⃣ Miscellaneous / Specialized Algorithms
+
+Topological Sort (DAGs)
+
+K-Core / K-Clique Algorithms
+
+Network Flow (Edmonds-Karp / Dinic)
+
+Disjoint Set / Union-Find
+
+Segment Trees / Fenwick Trees
+
+LRU / LFU Cache Implementation Algorithms
+
+✅ Notes
+
+Some algorithms appear in multiple categories:
+
+Merge Sort → Sorting & Divide & Conquer
+
+Kruskal → Graph & Greedy
+
+Algorithms can be generalized or specialized depending on data structure or problem type.
+
+This list covers almost all standard algorithms taught in computer science, competitive programming, and software engineering.
