@@ -34,15 +34,18 @@ void insertAtEnd(int value) {
 }
 
 void insertAtPosition(int value, int position) {
+    if (position <= 0) {
+        cout << "Invalid position\n";
+        return;
+    }
+
     if (position == 1) {
         insertAtBeginning(value);
         return;
     }
 
-    Node* newNode = new Node();
-    newNode->data = value;
-
     Node* temp = head;
+
     for (int i = 1; i < position - 1 && temp != NULL; i++) {
         temp = temp->next;
     }
@@ -52,7 +55,10 @@ void insertAtPosition(int value, int position) {
         return;
     }
 
+    Node* newNode = new Node();
+    newNode->data = value;
     newNode->next = temp->next;
+
     temp->next = newNode;
 }
 
