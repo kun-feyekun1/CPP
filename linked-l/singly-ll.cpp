@@ -62,7 +62,6 @@ void insertAtPosition(int value, int position) {
     temp->next = newNode;
 }
 
-// 4. Delete from beginning
 void deleteFromBeginning() {
     if (head == NULL) {
         cout << "List is empty\n";
@@ -74,7 +73,6 @@ void deleteFromBeginning() {
     delete temp;
 }
 
-// 5. Delete from end
 void deleteFromEnd() {
     if (head == NULL) {
         cout << "List is empty\n";
@@ -96,7 +94,6 @@ void deleteFromEnd() {
     temp->next = NULL;
 }
 
-// 6. Delete by value
 void deleteByValue(int value) {
     if (head == NULL) {
         cout << "List is empty\n";
