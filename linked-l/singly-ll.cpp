@@ -122,7 +122,6 @@ void deleteByValue(int value) {
     delete delNode;
 }
 
-// 7. Search an element
 bool search(int value) {
     Node* temp = head;
     while (temp != NULL) {
@@ -133,7 +132,6 @@ bool search(int value) {
     return false;
 }
 
-// 8. Count number of nodes
 int countNodes() {
     int count = 0;
     Node* temp = head;
@@ -144,7 +142,6 @@ int countNodes() {
     return count;
 }
 
-// 9. Reverse the linked list
 void reverseList() {
     Node* prev = NULL;
     Node* curr = head;
@@ -160,7 +157,6 @@ void reverseList() {
     head = prev;
 }
 
-// 10. Display the list
 void display() {
     if (head == NULL) {
         cout << "List is empty\n";
@@ -175,7 +171,6 @@ void display() {
     cout << "NULL\n";
 }
 
-// Main function
 int main() {
     insertAtBeginning(10);
     insertAtEnd(20);
