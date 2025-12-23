@@ -164,6 +164,55 @@ void deleteByValue(int value) {
     cout << "Value not found\n";
 }
 
+void deleteByValue(int value) {
+    if (head == NULL) {
+        cout << "List is empty\n";
+        return;
+    }
+
+    Node* curr = head;
+    Node* prev = NULL;
+
+    // Special handling if head itself holds the value
+    if (head->data == value) {
+
+        // Case 1: only one node
+        if (head->next == head) {
+            delete head;
+            head = NULL;
+            return;
+        }
+
+        // Case 2: multiple nodes
+        Node* last = head;
+        while (last->next != head)
+            last = last->next;
+
+        last->next = head->next;
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return;
+    }
+
+    // General case: value is NOT in head
+    prev = head;
+    curr = head->next;
+
+    while (curr != head) {
+        if (curr->data == value) {
+            prev->next = curr->next;
+            delete curr;
+            return;
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+
+    cout << "Value not found\n";
+}
+
+
 // 7. Search an element
 bool search(int value) {
     if (head == NULL)

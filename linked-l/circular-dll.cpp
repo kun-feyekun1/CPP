@@ -117,11 +117,10 @@ void deleteFromEnd() {
     }
 
     Node* last = head->prev;
-    Node* secondLast = last->prev;
 
-    secondLast->next = head;
-    head->prev = secondLast;
-
+    last->prev->next = head;
+    head->prev = last->prev;
+    
     delete last;
 }
 
