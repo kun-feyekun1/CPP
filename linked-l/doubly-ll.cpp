@@ -112,6 +112,35 @@ void deleteFromEnd() {
     delete temp;
 }
 
+void deleteAtPosition(int pos) {
+    if (head == nullptr) {
+        cout << "List is empty!\n";
+        return;
+    }
+
+    if (pos == 1) {
+        deleteFromBeginning();
+        return;
+    }
+
+    Node* temp = head;
+    for (int i = 1; temp != nullptr && i < pos; i++)
+        temp = temp->next;
+
+    if (temp == nullptr) {
+        cout << "Position out of range!\n";
+        return;
+    }
+
+    if (temp->next != nullptr)
+        temp->next->prev = temp->prev;
+
+    if (temp->prev != nullptr)
+        temp->prev->next = temp->next;
+
+    delete temp;
+}
+
 // 6. Delete by value
 void deleteByValue(int value) {
     if (head == NULL) {
@@ -139,6 +168,70 @@ void deleteByValue(int value) {
         temp->next->prev = temp->prev;
 
     delete temp;
+}
+
+
+void deleteEntireList() {
+    Node* temp;
+    while (head != nullptr) {
+        temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
+
+void displayForward() {
+    Node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->data << " <-> ";
+        temp = temp->next;
+    }
+    cout << "NULL\n";
+}
+
+void displayBackward() {
+    if (head == nullptr) {
+        cout << "NULL\n";
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != nullptr)
+        temp = temp->next;
+
+    while (temp != nullptr) {
+        cout << temp->data << " <-> ";
+        temp = temp->prev;
+    }
+    cout << "NULL\n";
+}
+
+Node* searchNode(int value) {    
+    Node* temp = head;    
+    while (temp != nullptr) {
+        if (temp->data == value)
+            return temp;
+        temp = temp->next;
+    }
+    return nullptr;
+}
+
+void updateValue(int oldValue, int newValue) {
+    Node* temp = head;
+    bool found = false;
+
+    while (temp != nullptr) {
+        if (temp->data == oldValue) {
+            temp->data = newValue;
+            found = true;
+        }
+        temp = temp->next;
+    }
+
+    if (!found)
+        cout << "Value not found!\n";
+    else
+        cout << "All matching values updated.\n";
 }
 
 // 7. Search an element
