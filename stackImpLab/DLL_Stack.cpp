@@ -42,7 +42,7 @@ int pop() {
     return value;
 }
 
-int top() {
+int peek() {
     if (topPtr == nullptr) {
         cout << "Stack is empty!" << endl;
         return -1;
@@ -71,7 +71,7 @@ int main() {
 
     display();
 
-    cout << "Top = " << top() << endl;
+    cout << "Top = " << peek() << endl;
 
     cout << "Popped = " << pop() << endl;
     display();
