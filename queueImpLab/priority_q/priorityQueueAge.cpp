@@ -7,10 +7,8 @@ struct AgeNode {
     AgeNode* next;
 };
 
-// Global front pointer
 AgeNode* front = NULL;
 
-// Enqueue: Higher age has higher priority
 void enqueue(int age) {
     AgeNode* n = new AgeNode();
     n->age = age;
@@ -31,7 +29,6 @@ void enqueue(int age) {
     cout << age << " enqueued.\n";
 }
 
-// Dequeue
 int dequeue() {
     if (front == NULL) {
         cout << "Queue Empty!\n";
@@ -47,13 +44,11 @@ int dequeue() {
     return age;
 }
 
-// Peek
 int peek() {
     if (front == NULL) return -1;
     return front->age;
 }
 
-// Display
 void display() {
     if (front == NULL) {
         cout << "Queue Empty!\n";

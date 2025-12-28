@@ -6,29 +6,31 @@ struct GNode {
     GNode* next;
 };
 
-// Global front pointer
 GNode* front = NULL;
+GNode* fend = NULL;
 
-// Enqueue: Females have higher priority
 void enqueue(char g) {
     GNode* n = new GNode();
     n->gender = g;
     n->next = NULL;
 
-    if (front == NULL || g == 'F' || g == 'f') {
+    if (front == NULL ) {
         n->next = front;
         front = n;
+   
     } else {
-        GNode* temp = front;
-        while (temp->next != NULL)
-            temp = temp->next;
-        temp->next = n;
+        GNode* fend = NULL;
+        while ( fend -> next -> gender != ('f' || 'F') && fend->next != NULL )
+            fend = fend->next;
+            
+            n->next=fend->next;
+            fend->next = n;
+
     }
 
     cout << g << " enqueued.\n";
 }
 
-// Dequeue
 char dequeue() {
     if (front == NULL) {
         cout << "Queue Empty!\n";
@@ -44,13 +46,11 @@ char dequeue() {
     return g;
 }
 
-// Peek
 char peek() {
     if (front == NULL) return '?';
     return front->gender;
 }
 
-// Display
 void display() {
     if (front == NULL) {
         cout << "Queue Empty!\n";

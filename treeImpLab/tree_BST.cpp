@@ -20,8 +20,7 @@ Node* createNode(int value) {
 Node* insert(Node* root, int value) {
     if (root == nullptr) {
         return createNode(value);
-    }
-    
+    }    
     if (value < root->data) {
         root->left = insert(root->left, value);
     } else {
@@ -52,7 +51,6 @@ void postorder(Node* root) {
     cout << root->data << " ";
 }
 
-// Search in Binary Tree
 bool search(Node* root, int value) {
     if (root == nullptr) return false;
     if (root->data == value) return true;
@@ -63,13 +61,29 @@ bool search(Node* root, int value) {
       return search(root->right, value);
 }
 
-// Count nodes
 int countNodes(Node* root) {
     if (root == nullptr) return 0;
     return 1 + countNodes(root->left) + countNodes(root->right);
 }
 
-// Find height of tree
+int countEdges(Node* root) {
+    int nodes = countNodes(root);
+    if (nodes == 0) return 0;
+    return nodes - 1;
+}
+
+//another form for edge count
+int countEdges(Node* root) {
+    if (root == nullptr) return 0;
+
+    int edges = 0;
+    if (root->left) edges++;
+    if (root->right) edges++;
+
+    return edges + countEdges(root->left) + countEdges(root->right);
+}
+
+
 int height(Node* root) {
     if (root == nullptr) return 0;
     int lHeight = height(root->left);
@@ -77,47 +91,18 @@ int height(Node* root) {
     return max(lHeight, rHeight) + 1;
 }
 
-// Find minimum value node (used in deletion)
 Node* minValueNode(Node* root) {
-    Node* current = root;
-    while (current && current->left != nullptr)
-        current = current->left;
-    return current;
+    Node* curr = root;
+    while (curr && curr->left != nullptr)
+        curr = curr->left;
+    return curr;
 }
 
-// Delete a node
-Node* deleteNode(Node* root, int value) {
-    if (root == nullptr) return root;
-
-    if (value < root->data)
-        root->left = deleteNode(root->left, value);
-    else if (value > root->data)
-        root->right = deleteNode(root->right, value);
-    else {
-        // Node found
-        if (root->left == nullptr) {
-            Node* temp = root->right;
-            delete root;
-            return temp;
-        }
-        else if (root->right == nullptr) {
-            Node* temp = root->left;
-            delete root;
-            return temp;
-        }
-
-        Node* temp = minValueNode(root->right);
-        root->data = temp->data;
-        root->right = deleteNode(root->right, temp->data);
-    }
-
-    return root;
-}
-
-// Display tree (in-order)
-void display(Node* root) {
-    inorder(root);
-    cout << endl;
+Node* maxValueNode(Node* root) {
+    Node* curr = root;
+    while (curr && curr->right != nullptr)
+        curr = curr->right;
+    return curr;
 }
 
 // MAIN
@@ -133,32 +118,42 @@ int main() {
     root = insert(root, 60);
     root = insert(root, 80);
 
-    cout << "In-order traversal: ";
+    cout << "In order traversal: ";
     inorder(root);
     cout << endl;
 
-    cout << "Pre-order traversal: ";
+    cout << "Pre order traversal: ";
     preorder(root);
     cout << endl;
 
-    cout << "Post-order traversal: ";
+    cout << "Post order traversal: ";
     postorder(root);
     cout << endl;
 
+    cout << "max val: "<< maxValueNode(root)->data; 
+    cout << endl;
+
+    cout << "min val: "<< minValueNode(root)->data;
+    cout << endl;
+    
     cout << "Search 40: " << (search(root, 40) ? "Found" : "Not Found") << endl;
     cout << "Search 90: " << (search(root, 90) ? "Found" : "Not Found") << endl;
-
+    
     cout << "Number of nodes: " << countNodes(root) << endl;
+    cout << "number of edges: "<<countEdges(root)<<endl;
     cout << "Height of tree: " << height(root) << endl;
 
-    // Delete a node
-    root = deleteNode(root, 20); // Leaf
-    root = deleteNode(root, 30); // Node with one child
-    root = deleteNode(root, 50); // Node with two children
-
-    cout << "In-order traversal after deletions: ";
-    inorder(root);
     cout << endl;
 
     return 0;
 }
+
+
+// docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Strong!Pass123" -p 1433:1433 --name sqlserver2022 -d mcr.microsoft.com/mssql/server:2022-latest
+// docker pull mcr.microsoft.com/mssql/server:2022-latest
+
+// docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Strong!Pass123" -p 1433:1433 --name sqlserver2022 -v D:\SQLData:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2022-latest
+
+
+// docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Strong!Pass123" -p 1433:1433 --name sqlserver2022 -v D:/SQLData:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2022-latest
+// docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Strong!Pass123" -p 1433:1433 --name sqlserver2022 -d mcr.microsoft.com/mssql/server:2022-latest
