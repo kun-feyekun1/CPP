@@ -125,9 +125,10 @@ Node* deleteByMergingLeft(Node* root, int value) {
             delete root;
             return temp;
         }
-        else { // Two children → merge left
+        else {
             Node* tmp = root->left;
-            while (tmp->right) tmp = tmp->right;
+            while (tmp->right) 
+              tmp = tmp->right;
             tmp->right = root->right;
             Node* del = root;
             root = root->left;
@@ -159,9 +160,9 @@ Node* deleteByMergingRight(Node* root, int value) {
             delete root;
             return temp;
         }
-        else { // Two children → merge right
+        else {
             Node* tmp = root->right;
-            while (tmp->left) tmp = tmp->left; // leftmost of right subtree
+            while (tmp->left) tmp = tmp->left;
             tmp->left = root->left;
             Node* del = root;
             root = root->right;
@@ -180,42 +181,31 @@ void inorder(Node* root) {
 
 int main() {
     Node* root = nullptr;
-    int values[] = {50, 30, 70, 20, 40, 60, 80};
+    int values[] = {29,18,12,24,35,32,30,33,38,36,41,45};
     for (int k : values)
         root = insert(root, k);
 
     cout << "Original BST (Inorder): ";
     inorder(root); cout << endl;
 
-    cout << "\n--- Deletion by Copying: Predecessor ---\n";
-    root = deleteByCopyingPred(root, 50);
+    cout << "\nDeleting leaf Node: 12\n";
+    root = deleteByCopyingPred(root, 12);
     inorder(root); cout << endl;
 
-    // Rebuild
-    root = nullptr;
-    for (int k : values)
-        root = insert(root, k);
-
-    cout << "\n--- Deletion by Copying: Successor ---\n";
-    root = deleteByCopyingSucc(root, 50);
+    cout << "\n Deleting single left child:  24 \n";
+    root = deleteByCopyingSucc(root, 24);
     inorder(root); cout << endl;
 
-    // Rebuild
-    root = nullptr;
-    for (int k : values)
-        root = insert(root, k);
-
-    cout << "\n--- Deletion by Merging: Left ---\n";
-    root = deleteByMergingLeft(root, 50);
+    cout << "\n Deleting Node with right child: 41\n";
+    root = deleteByMergingLeft(root, 41);
     inorder(root); cout << endl;
 
-    // Rebuild
-    root = nullptr;
-    for (int k : values)
-        root = insert(root, k);
+    cout << "\nDeletion by Copying: 35, Predecessor\n";
+    root = deleteByCopyingPred(root, 35);
+    inorder(root); cout << endl;
 
-    cout << "\n--- Deletion by Merging: Right ---\n";
-    root = deleteByMergingRight(root, 50);
+    cout << "\n Deletion by Merging: 35, Right \n";
+    root = deleteByMergingRight(root, 35);
     inorder(root); cout << endl;
 
     return 0;

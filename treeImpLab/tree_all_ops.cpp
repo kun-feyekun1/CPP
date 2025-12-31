@@ -43,7 +43,6 @@ void postorder(Node* root) {
     cout << root->data << " ";
 }
 
-// Search in BST
 bool search(Node* root, int value) {
     if (!root) return false;
     if (root->data == value) return true;
@@ -80,7 +79,8 @@ int height(Node* root) {
 // Find minimum value node
 Node* minValueNode(Node* root) {
     Node* current = root;
-    while (current && current->left) current = current->left;
+    while (current && current->left) 
+       current = current->left;
     return current;
 }
 
@@ -89,6 +89,107 @@ Node* maxValueNode(Node* root) {
     Node* current = root;
     while (current && current->right) current = current->right;
     return current;
+}
+
+Node* findMin(Node* root) {
+    while (root->left != nullptr)
+        root = root->left;
+    return root;
+}
+
+Node* inorderSuccessor(Node* root, Node* target) {
+    if (target->right != nullptr)
+        return findMin(target->right);
+
+    Node* successor = nullptr;
+    Node* curr = root;
+    while (curr != nullptr) {
+        if (target->data < curr->data) {
+            successor = curr;
+            curr = curr->left;
+        } else if (target->data > curr->data) {
+            curr = curr->right;
+        } else
+            break;
+    }
+    return successor;
+}
+
+Node* findMax(Node* root) {
+    while (root->right != nullptr)
+        root = root->right;
+    return root;
+}
+
+Node* inorderPredecessor(Node* root, Node* target) {
+    if (target->left != nullptr)
+        return findMax(target->left);
+
+    Node* predecessor = nullptr;
+    Node* curr = root;
+    while (curr != nullptr) {
+        if (target->data > curr->data) {
+            predecessor = curr;
+            curr = curr->right;
+        } else if (target->data < curr->data) {
+            curr = curr->left;
+        } else
+            break;
+    }
+    return predecessor;
+}
+
+
+Node* inorderPredecessor(Node* root, Node* target) {
+    if (!root || !target) return nullptr;
+
+    if (target->left != nullptr) {
+        Node* temp = target->left;
+        while (temp->right != nullptr)
+        temp = temp->right;
+        return temp;
+    }
+    
+    Node* curr = root;
+    Node* predecessor = nullptr;
+
+    while (curr != nullptr) {
+        if (target->data > curr->data) {
+            predecessor = curr;
+            curr = curr->right;
+        } else if (target->data < curr->data) {
+            curr = curr->left;
+        } else {
+            break;
+        }
+    }
+  return predecessor;
+}
+
+Node* inorderSuccessor(Node* root, Node* target) {
+    if (!root || !target) return nullptr;
+
+    Node* successor = nullptr;
+    if (target->right != nullptr) {
+        Node* temp = target->right;
+        while (temp->left != nullptr)
+            temp = temp->left;
+        return temp;
+    }
+
+    Node* curr = root;
+    while (curr != nullptr) {
+        if (target->data < curr->data) {
+            successor = curr;
+            curr = curr->left;
+        } else if (target->data > curr->data) {
+            curr = curr->right;
+        } else {
+            break;
+        }
+    }
+
+    return successor;
 }
 
 // Sum of all nodes

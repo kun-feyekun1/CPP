@@ -2,7 +2,6 @@
 #include <iostream>
 using namespace std;
 
-
 struct Node {
     int data;
     Node* left;
@@ -82,7 +81,6 @@ int countEdges(Node* root) {
 
     return edges + countEdges(root->left) + countEdges(root->right);
 }
-
 
 int height(Node* root) {
     if (root == nullptr) return 0;
