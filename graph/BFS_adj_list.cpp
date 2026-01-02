@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#define MAX 10
+#define MAX 11
 
 struct Node {
     int data;
@@ -9,14 +9,11 @@ struct Node {
 };
 
 void addEdge(Node* adj[], int u, int v) {
-    Node* n1 = new Node{v, adj[u]};
-    adj[u] = n1;
-
-    Node* n2 = new Node{u, adj[v]};
-    adj[v] = n2;
+    Node* n = new Node{v, adj[u]};
+    adj[u] = n;
 }
 
-void BFS(Node* adj[], int V, int start) {
+void BFS_Path(Node* adj[], int V, int start, bool reachable[MAX]) {
     bool visited[MAX] = {false};
     int queue[MAX], front = 0, rear = 0;
 
@@ -25,12 +22,12 @@ void BFS(Node* adj[], int V, int start) {
 
     while (front < rear) {
         int u = queue[front++];
-        cout << u << " ";
 
         for (Node* temp = adj[u]; temp != nullptr; temp = temp->next) {
             int v = temp->data;
             if (!visited[v]) {
                 visited[v] = true;
+                reachable[v] = true;
                 queue[rear++] = v;
             }
         }
@@ -38,15 +35,41 @@ void BFS(Node* adj[], int V, int start) {
 }
 
 int main() {
-    int V = 5;
+    int V = 11;
     Node* adj[MAX] = {nullptr};
 
+    // Same edges as your adjacency matrix
     addEdge(adj, 0, 1);
-    addEdge(adj, 0, 2);
-    addEdge(adj, 1, 3);
-    addEdge(adj, 2, 3);
-    addEdge(adj, 2, 4);
+    addEdge(adj, 0, 3);
+    addEdge(adj, 0, 5);
 
-    BFS(adj, V, 0);
+    addEdge(adj, 1, 2);
+
+    addEdge(adj, 3, 0);
+    addEdge(adj, 3, 4);
+
+    addEdge(adj, 4, 3);
+
+    addEdge(adj, 5, 6);
+
+    addEdge(adj, 6, 7);
+
+    addEdge(adj, 8, 9);
+    addEdge(adj, 8, 10);
+
+    cout << "Connected vertex pairs (path exists):\n\n";
+
+    for (int i = 0; i < V; i++) {
+        bool reachable[MAX] = {false};
+
+        BFS_Path(adj, V, i, reachable);
+
+        for (int j = 0; j < V; j++) {
+            if (i != j && reachable[j]) {
+                cout << i << " -> " << j << endl;
+            }
+        }
+    }
+
     return 0;
 }
