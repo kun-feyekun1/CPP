@@ -1,7 +1,12 @@
+
 #include <iostream>
 using namespace std;
 
 #define MAX 11
+
+void addEdge(int adj[MAX][MAX], int u, int v) {
+    adj[u][v] = 1;
+}
 
 void DFS_Util(int adj[MAX][MAX], int V, int u,
               bool visited[MAX], bool reachable[MAX]) {
@@ -23,19 +28,24 @@ void DFS_Path(int adj[MAX][MAX], int V, int start, bool reachable[MAX]) {
 int main() {
     int V = 11;
 
-    int adj[MAX][MAX] = {
-        {0,1,0,1,0,1,0,0,0,0,0},
-        {0,0,1,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0},
-        {1,0,0,0,1,0,0,0,0,0,0},
-        {0,0,0,1,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,1,0,0,0,0},
-        {0,0,0,0,0,0,0,1,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,1,1},
-        {0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0}
-    };
+    int adj[MAX][MAX] = {0};
+
+    addEdge(adj, 0, 1);   // AA -> Jimma
+    addEdge(adj, 0, 3);   // AA -> Debre Markos
+    addEdge(adj, 0, 5);   // AA -> Adama
+
+    addEdge(adj, 1, 2);   // Jimma -> Nekemte
+
+    addEdge(adj, 3, 0);   // Debre Markos -> AA
+    addEdge(adj, 3, 4);   // Debre Markos -> Bahir Dar
+
+    addEdge(adj, 4, 3);   // Bahir Dar -> Debre Markos
+
+    addEdge(adj, 5, 6);   // Adama -> Hawasa
+    addEdge(adj, 6, 7);   // Hawasa -> Arba Minch
+
+    addEdge(adj, 8, 9);   // Dire Dawa -> Jijiga
+    addEdge(adj, 8, 10);  // Dire Dawa -> Harar
 
     cout << "DFS Reachable pairs (Matrix):\n\n";
 
