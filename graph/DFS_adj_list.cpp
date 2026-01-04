@@ -14,9 +14,9 @@ void addEdge(Node* adj[], int u, int v) {
     adj[u] = n;
 }
 
-void DFS_Util(Node* adj[], int u,
-              bool visited[MAX], bool reachable[MAX]) {
-    for (Node* temp = adj[u]; temp != nullptr; temp = temp->next) {
+void DFS_Util(Node* adj[], int u, bool visited[MAX], bool reachable[MAX]) {
+    for (Node* temp = adj[u]; temp != nullptr; 
+           temp = temp->next) {
         int v = temp->data;
         if (!visited[v]) {
             visited[v] = true;
